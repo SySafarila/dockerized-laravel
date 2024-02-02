@@ -4,11 +4,9 @@ services:
     container_name: nginx
     ports:
       - 80:80
-      - 443:443
     volumes:
       - ./laravel:/var/www/html:ro
       - ./config/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
-      - ./cloudflare/ssl:/etc/ssl:ro
     restart: always
   php-fpm:
     container_name: php-fpm
@@ -17,14 +15,6 @@ services:
     volumes:
       - ./laravel:/var/www/html
     restart: always
-  php-scheduler:
-    container_name: php-scheduler
-    build:
-      dockerfile: ./dockerfiles/php/Dockerfile
-    volumes:
-      - ./laravel:/var/www/html
-    restart: always
-    command: php artisan schedule:work
   mariadb:
     image: mariadb:10.10
     container_name: mariadb
