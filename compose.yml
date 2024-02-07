@@ -10,8 +10,7 @@ services:
     restart: always
   php-fpm:
     container_name: php-fpm
-    build:
-      dockerfile: ./dockerfiles/php/Dockerfile
+    image: sysafarila/php-laravel:8.1-fpm-alpine
     volumes:
       - ./laravel:/var/www/html
     restart: always
