@@ -12,7 +12,8 @@ services:
     container_name: php-fpm
     image: sysafarila/php-laravel:v0.0.1
     volumes:
-      - ./laravel:/var/www/html
+      - ./laravel:/var/www/html:rw
+      - ./config/php.ini:/usr/local/etc/php/php.ini:ro
     restart: always
   mariadb:
     image: mariadb:10.10
