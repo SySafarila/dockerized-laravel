@@ -32,7 +32,7 @@ php artisan migrate --seed
 
 ## Directories and Files permissions
 
-since UID:GID of `www-data` on Alpine Linux is **82** while on Ubuntu/Debian is **33**, you have to change directories and files owner on your Docker host to **82**, follow command line below to update your permissions.
+Since UID:GID of `www-data` on Alpine Linux is **82** while on Ubuntu/Debian is **33**, you have to change directories and files owner on your Docker host to **82**, follow command line below to update your permissions.
 
 \*note: `php-fpm` container on compose file is based on Alpine Linux
 
@@ -43,3 +43,11 @@ sudo chown -R 82:$USER storage/ bootstrap/
 source: [stackoverflow.com](https://stackoverflow.com/questions/66507234/docker-volume-mount-and-permissions-www-data-on-host-33-becomes-xfs-33-in-a)
 
 Contact: sysafarila.official@gmail.com
+
+## Set CronJob
+
+Run this command below to apply queue
+
+```sh
+crontab mycrontab
+```

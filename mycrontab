@@ -1,0 +1,2 @@
+* * * * * sh ~/Projects/dockerized-laravel/shell-scripts/queue.sh
+# empty line. this crontab will execute queue.sh file for every minute
