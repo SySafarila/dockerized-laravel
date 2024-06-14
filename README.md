@@ -51,3 +51,6 @@ Run this command below to apply queue
 ```sh
 crontab mycrontab
 ```
+
+## non-root Docker
+[Manage Docker as a non-root user](https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user)
