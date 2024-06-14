@@ -1,1 +1,1 @@
-sudo docker compose exec -it php-fpm sh -c "php artisan optimize"
+docker compose exec -it php-fpm sh -c "php artisan optimize"

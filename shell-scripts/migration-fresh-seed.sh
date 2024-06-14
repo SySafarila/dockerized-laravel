@@ -1,1 +1,1 @@
-sudo docker compose exec -it php-fpm sh -c "php artisan migrate:fresh --seed"
+docker compose exec -it php-fpm sh -c "php artisan migrate:fresh --seed"

@@ -1,1 +1,1 @@
-sudo docker compose exec -it php-fpm sh -c "composer install"
+docker compose exec -it php-fpm sh -c "composer install"
