@@ -1,1 +1,1 @@
-docker compose exec -it php-fpm sh -c "php artisan queue:work --max-time=60"
+docker compose -f ~/Projects/dockerized-laravel/compose.yml exec -it php-fpm sh -c "php artisan queue:work --max-time=60"
