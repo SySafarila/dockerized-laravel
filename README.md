@@ -1,4 +1,4 @@
-## Installation
+## Installation and Usage
 
 Install or clone your Laravel aplication inside this root. example: `dockerized-laravel/your-laravel`
 
@@ -10,9 +10,9 @@ Run this command below to start your Laravel, Nginx, and Mariadb container
 docker compose up -d
 ```
 
-\*use `sudo` if you need to run this as root user
+\*use `sudo` if you need to run this as root user. Or, check this [docs](https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user) to run docker with non-root user
 
-After all containers is up, get in to your `php-fpm` container to install all dependencies and run your database migrations by running this command below
+After all containers is up/running, login to your `php-fpm` container to install all dependencies by running this command below:
 
 ```shell
 docker compose exec -it php-fpm sh
@@ -24,10 +24,10 @@ inside your container, run this command below to install all required dependenci
 composer install
 ```
 
-and then run this command below to run your migrations with the seeders
+after all dependencies are installed, run this command below inside your to run your database migration
 
 ```shell
-php artisan migrate --seed
+php artisan migrate:fresh --seed
 ```
 
 ## Directories and Files permissions
@@ -40,17 +40,18 @@ Since UID:GID of `www-data` on Alpine Linux is **82** while on Ubuntu/Debian is 
 sudo chown -R 82:$USER storage/ bootstrap/
 ```
 
-source: [stackoverflow.com](https://stackoverflow.com/questions/66507234/docker-volume-mount-and-permissions-www-data-on-host-33-becomes-xfs-33-in-a)
+\*run this command on your ROOT laravel folder. Source: [stackoverflow.com](https://stackoverflow.com/questions/66507234/docker-volume-mount-and-permissions-www-data-on-host-33-becomes-xfs-33-in-a)
 
-Contact: sysafarila.official@gmail.com
+## CronJob or Automation
 
-## Set CronJob
-
-Run this command below to apply queue
+Run this command below to apply queue for a minute
 
 ```sh
 crontab mycrontab
 ```
 
-## non-root Docker
-[Manage Docker as a non-root user](https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user)
+Make sure all files on `shell-scripts` folder are executable for your user.
+
+## Non-root Docker
+
+Read this [Documentation](https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user) to run your docker without `sudo`
