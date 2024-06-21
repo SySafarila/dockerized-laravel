@@ -1,6 +1,6 @@
 services:
   nginx:
-    image: nginx:stable
+    image: nginx:stable-alpine-slim
     container_name: nginx
     ports:
       - 80:80
