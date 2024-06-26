@@ -55,3 +55,6 @@ Make sure all files on `shell-scripts` folder are executable for your user.
 ## Non-root Docker
 
 Read this [Documentation](https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user) to run your docker without `sudo`
+
+## SSL Configuration Reference
+- [How To Host a Website Using Cloudflare and Nginx on Ubuntu 20.04 - DigitalOcean](https://www.digitalocean.com/community/tutorials/how-to-host-a-website-using-cloudflare-and-nginx-on-ubuntu-20-04)
