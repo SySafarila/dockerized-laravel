@@ -11,6 +11,7 @@ services:
   php-fpm:
     container_name: php-fpm
     # use v0.0.1 for Laravel 10, use v0.1.0 for Laravel 11
+    # use v0.0.2 for Laravel 10 with Postgres, use v0.1.1 for Laravel 11 with Postgres
     image: sysafarila/php-laravel:v0.0.1
     volumes:
       - ./laravel:/var/www/html:rw
