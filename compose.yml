@@ -1,40 +1,28 @@
 services:
   nginx:
     image: nginx:stable-alpine-slim
-    container_name: nginx
     ports:
       - 80:80
     volumes:
-      - ./laravel:/var/www/html:ro
       - ./config/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - laravel_data:/laravel:ro
     restart: always
   php-fpm:
-    container_name: php-fpm
-    # use v0.0.1 for Laravel 10, use v0.1.0 for Laravel 11
-    # use v0.0.2 for Laravel 10 with Postgres, use v0.1.1 for Laravel 11 with Postgres
-    image: sysafarila/php-laravel:v0.0.1
+    image: sysafarila/php-laravel:8.3-fpm-alpine
     volumes:
-      - ./laravel:/var/www/html:rw
       - ./config/php.ini:/usr/local/etc/php/php.ini:ro
+      - laravel_data:/laravel:rw
     restart: always
     depends_on:
       - mariadb
       - nginx
   mariadb:
     image: mariadb:10.10
-    container_name: mariadb
     environment:
       - MARIADB_ROOT_PASSWORD=password
       - MARIADB_DATABASE=backend
     volumes:
       - ./mariadb-data:/var/lib/mysql
     restart: always
-  phpmyadmin:
-    image: phpmyadmin:5.2.1-apache
-    container_name: phpmyadmin
-    environment:
-      - PMA_ARBITRARY=1
-    ports:
-      - 8080:80
-    depends_on:
-      - mariadb
+volumes:
+  laravel_data:
