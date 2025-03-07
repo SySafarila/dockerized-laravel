@@ -22,7 +22,19 @@ services:
       - MARIADB_ROOT_PASSWORD=password
       - MARIADB_DATABASE=backend
     volumes:
-      - ./mariadb-data:/var/lib/mysql
+      - mariadb_data:/var/lib/mysql
     restart: always
+  # postgres17:
+  #   image: postgres:17
+  #   environment:
+  #     - POSTGRES_USER=postgres
+  #     - POSTGRES_PASSWORD=password
+  #     - POSTGRES_DB=leeasy_rafindo
+  #   volumes:
+  #     - postgres_data:/var/lib/postgresql/data:rw
+  #   restart: always
+
 volumes:
   laravel_data:
+  mariadb_data:
+  postgres_data:
